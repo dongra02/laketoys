@@ -1,3 +1,3 @@
 # LakeToys
 
-Lake toy rental app (similar to AirBNB)
+In progress - view dev branch
