@@ -29,7 +29,7 @@ async function login (req, res, next) {
 
 async function getProfile (req, res, next) {
   try {
-    const user = User.findById(req.currentUser._id)
+    const user = await User.findById(req.currentUser._id)
     if (!user) throw new Error(notFound)
     res.status(200).json(user)
   } catch (err) {
@@ -38,8 +38,8 @@ async function getProfile (req, res, next) {
 }
 
 
-
 module.exports = {
   register,
-  login
+  login,
+  getProfile
 }
