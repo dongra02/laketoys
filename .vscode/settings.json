@@ -1,0 +1,11 @@
+{
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#33a626",
+    "titleBar.activeBackground": "#33a626",
+    "titleBar.inactiveBackground": "#33a626",
+    "statusBar.foreground": "#000",
+    "titleBar.inactiveForeground": "#000",
+    "titleBar.activeForeground": "#000",
+  },
+  "window.title": "Lake Toys BACKEND"
+}
