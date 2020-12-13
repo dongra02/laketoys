@@ -19,9 +19,19 @@ async function login (req, res, next) {
     const token = jwt.sign(
       { sub: user._id },
       secret,
-      { expiresIn: '7 days'}
+      { expiresIn: '24h'}
     )
     res.status(202).json({ message: `Welcome back to the lake, ${user.username}` , token })
+  } catch (err) {
+    next(err)
+  }
+}
+
+async function getProfile (req, res, next) {
+  try {
+    const user = User.findById(req.currentUser._id)
+    if (!user) throw new Error(notFound)
+    res.status(200).json(user)
   } catch (err) {
     next(err)
   }
