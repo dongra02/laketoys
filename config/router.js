@@ -19,5 +19,6 @@ router.route('/toys')
 router.route('/toys/:id')
   .get(toy.show)
   .put(secureRoute, toy.update)
+  .delete(secureRoute, toy.delete)
 
 module.exports = router

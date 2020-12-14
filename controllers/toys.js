@@ -4,7 +4,7 @@ const { notFound, forbidden } = require('../lib/errorMessage')
 async function toyIndex(_req, res, next) {
   try {
     const toys = await Toy.find()
-      .populate('owner')
+      .populate('owner', 'username')
     if (!toys) throw new Error(notFound)
     res.status(200).json(toys)
   } catch (err) {
@@ -47,10 +47,23 @@ async function toyUpdate(req, res, next) {
   }
 }
 
+async function toyDelete(req, res, next) {
+  try {
+    const toyToDel = await Toy.findById(req.params.id)
+    if (!toyToDel) throw new Error(notFound)
+    if (!toyToDel.owner.equals(req.currentUser._id)) throw new Error(forbidden)
+    await toyToDel.remove()
+    res.sendStatus(204)
+  } catch (err) {
+    next(err)
+  }
+}
+
 
 module.exports = {
   index: toyIndex,
   create: toyCreate,
   show: toyShow,
-  update: toyUpdate
+  update: toyUpdate,
+  delete: toyDelete
 }
