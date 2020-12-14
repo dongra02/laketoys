@@ -22,8 +22,21 @@ async function toyCreate(req, res, next) {
   }
 }
 
+async function toyShow(req, res, next) {
+  try {
+    const toy = await Toy.findById(req.params.id)
+      .populate('owner')
+      .populate('reviews')
+    if (!toy) throw new Error(notFound)
+    res.status(200).json(toy)
+  } catch (err) {
+    next(err)
+  }
+}
+
 
 module.exports = {
   index: toyIndex,
-  create: toyCreate
+  create: toyCreate,
+  show: toyShow
 }

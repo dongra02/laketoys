@@ -16,4 +16,7 @@ router.route('/toys')
   .get(toy.index)
   .post(secureRoute, toy.create)
 
+router.route('/toys/:id')
+  .get(toy.show)
+
 module.exports = router
