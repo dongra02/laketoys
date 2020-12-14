@@ -4,6 +4,7 @@ const { notFound, forbidden } = require('../lib/errorMessage')
 async function toyIndex(_req, res, next) {
   try {
     const toys = await Toy.find()
+      .populate('owner')
     if (!toys) throw new Error(notFound)
     res.status(200).json(toys)
   } catch (err) {
