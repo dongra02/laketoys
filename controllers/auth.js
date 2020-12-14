@@ -19,7 +19,7 @@ async function login (req, res, next) {
     const token = jwt.sign(
       { sub: user._id },
       secret,
-      { expiresIn: '24h'}
+      { expiresIn: '24h' }
     )
     res.status(202).json({ message: `Welcome back to the lake, ${user.username}` , token })
   } catch (err) {
