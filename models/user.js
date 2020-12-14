@@ -3,11 +3,20 @@ const bcrypt = require('bcrypt')
 
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, maxlength: 30, required: true },
+  userType: { type: String, enum: ['Owner', 'Renter'], required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true }
 })
 
-// will need virtual for owned lake toys
+
+// will need virtual for orders, can you make it conditional on type
+
+userSchema
+  .virtual('toysOwned', {
+    ref: 'Toy',
+    localField: '_id',
+    foreignField: 'owner'
+  })
 
 userSchema
   .set('toJSON', {
