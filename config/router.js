@@ -21,4 +21,7 @@ router.route('/toys/:id')
   .put(secureRoute, toy.update)
   .delete(secureRoute, toy.delete)
 
+router.route('/toys/:id/reviews')
+  .post(secureRoute, toy.reviewCreate)
+
 module.exports = router

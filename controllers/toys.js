@@ -59,11 +59,25 @@ async function toyDelete(req, res, next) {
   }
 }
 
+// possbily add in feature to stop block toy owners from reviewing
+async function reviewCreate(req, res, next) {
+  try {
+    const toyToReview = await Toy.findById(req.params.id)
+    if (!toyToReview) throw new Error(notFound)
+    const review = { ...req.body, owner: req.currentUser._id }
+    toyToReview.reviews.push(review)
+    await toyToReview.save()
+    res.status(202).json({ message: 'Review added' })
+  } catch (err) {
+    next(err)
+  }
+}
 
 module.exports = {
   index: toyIndex,
   create: toyCreate,
   show: toyShow,
   update: toyUpdate,
-  delete: toyDelete
+  delete: toyDelete,
+  reviewCreate: reviewCreate
 }
