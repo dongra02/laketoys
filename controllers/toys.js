@@ -34,9 +34,23 @@ async function toyShow(req, res, next) {
   }
 }
 
+async function toyUpdate(req, res, next) {
+  try {
+    const toyToEdit = await Toy.findById(req.params.id)
+    if (!toyToEdit) throw new Error(notFound)
+    if (!toyToEdit.owner.equals(req.currentUser._id)) throw new Error(forbidden)
+    Object.assign(toyToEdit, req.body)
+    await toyToEdit.save()
+    res.status(202).json(toyToEdit)
+  } catch (err) {
+    next(err)
+  }
+}
+
 
 module.exports = {
   index: toyIndex,
   create: toyCreate,
-  show: toyShow
+  show: toyShow,
+  update: toyUpdate
 }
