@@ -9,7 +9,7 @@ async function orderCreate(req, res, next) {
     if (!orderToy) throw new Error(notFound)
     // create toyIsAvail method on Toy with dates as params
     // run against above method with order dates, throw new error if not avail
-    const newOrderData = { ...req.body, customer: req.currentUser._id, owner: orderToy.owner._id }
+    const newOrderData = { ...req.body, renter: req.currentUser._id, owner: orderToy.owner._id }
     const newOrder = await Order.create(newOrderData)
     res.status(201).json(newOrder)
   } catch (err) {

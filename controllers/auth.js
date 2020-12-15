@@ -44,7 +44,7 @@ async function profileOrders(req, res, next) {
     const user = await User.findById(req.currentUser._id)
     if (!user) throw new Error(notFound)
     if (user.userType === 'Renter') {
-      orders = await Order.find({ customer: user._id })
+      orders = await Order.find({ renter: user._id })
     }
     if (user.userType === 'Owner') {
       orders = await Order.find({ owner: user._id })
