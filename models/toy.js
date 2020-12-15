@@ -10,6 +10,10 @@ const reviewSchema = new mongoose.Schema({
 const toySchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, maxlength: 300, required: true },
+  location: {
+    latitude: { type: Number, required: true },
+    longitude: { type: Number, required: true }
+  },
   rate: { type: Number, required: true },
   reviews: [reviewSchema],
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
@@ -18,6 +22,8 @@ const toySchema = new mongoose.Schema({
 toySchema
   .virtual('avgRating')
   .get( function () {
+    console.log(!this.reviews)
+    if (!this.reviews) return ''
     if (!this.reviews.length) return 'Not yet reviewed'
     const avgRating = this.reviews.reduce((acc, curr) => {
       return acc + curr.rating

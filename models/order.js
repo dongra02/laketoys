@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const orderSchema = new mongoose.Schema({
-  // TODO put dates back in after testing
-  // startDate: { type: Date, required: true },
-  // endDate: { type: Date, required: true },
+  startDate: { type: Date, required: true },
+  endDate: { type: Date, required: true },
+  orderStatus: { type: String, enum: ['pending', 'confirmed'], default: 'pending', required: true },
   price: { type: Number, required: true },
   renter: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
