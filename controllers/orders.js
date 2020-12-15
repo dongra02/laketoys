@@ -1,7 +1,7 @@
 const Order = require('../models/order')
 const Toy = require('../models/toy')
 const User = require('../models/user')
-const { notFound } = require('../lib/errorMessage')
+const { notFound, forbidden } = require('../lib/errorMessage')
 
 
 async function orderCreate(req, res, next) {
@@ -35,8 +35,21 @@ async function profileOrders(req, res, next) {
   }
 }
 
+async function orderShow(req, res, next) {
+  try {
+    const userId = req.currentUser._id
+    const order = await Order.findById(req.params.id)
+    if (!order) throw new Error(notFound)
+    if (!order.owner._id.equals(userId) && !order.renter._id.equals(userId)) throw new Error(forbidden)
+    res.status(200).json(order)
+  } catch (err) {
+    next(err)
+  }
+}
+
 
 module.exports = {
   create: orderCreate,
-  profileOrders
+  profileOrders,
+  show: orderShow
 }

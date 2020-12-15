@@ -33,6 +33,8 @@ router.route('/toys/:id/reviews')
 router.route('/orders')
   .post(secureRoute, order.create)
 
+router.route('/orders/:id')
+  .get(secureRoute, order.show)
   
 
 module.exports = router
