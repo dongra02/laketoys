@@ -1,5 +1,6 @@
 const Order = require('../models/order')
 const Toy = require('../models/toy')
+const User = require('../models/user')
 const { notFound } = require('../lib/errorMessage')
 
 
@@ -17,8 +18,25 @@ async function orderCreate(req, res, next) {
   }
 }
 
+async function profileOrders(req, res, next) {
+  try {
+    let orders  = []
+    const user = await User.findById(req.currentUser._id)
+    if (!user) throw new Error(notFound)
+    if (user.userType === 'Renter') {
+      orders = await Order.find({ renter: user._id })
+    }
+    if (user.userType === 'Owner') {
+      orders = await Order.find({ owner: user._id })
+    }
+    res.status(200).json(orders)
+  } catch (err) {
+    next(err)
+  }
+}
+
 
 module.exports = {
-  // index: orderIndex,
-  create: orderCreate
+  create: orderCreate,
+  profileOrders
 }

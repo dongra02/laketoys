@@ -38,27 +38,9 @@ async function getProfile(req, res, next) {
   }
 }
 
-async function profileOrders(req, res, next) {
-  try {
-    let orders  = []
-    const user = await User.findById(req.currentUser._id)
-    if (!user) throw new Error(notFound)
-    if (user.userType === 'Renter') {
-      orders = await Order.find({ renter: user._id })
-    }
-    if (user.userType === 'Owner') {
-      orders = await Order.find({ owner: user._id })
-    }
-    res.status(200).json(orders)
-  } catch (err) {
-    next(err)
-  }
-}
-
 
 module.exports = {
   register,
   login,
-  getProfile,
-  profileOrders
+  getProfile
 }

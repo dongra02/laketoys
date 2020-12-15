@@ -14,7 +14,7 @@ router.route('/profile')
   .get(secureRoute, auth.getProfile)
 
 router.route('/profile/orders')
-  .get(secureRoute, auth.profileOrders)
+  .get(secureRoute, order.profileOrders)
 
 
 router.route('/toys')

@@ -8,23 +8,6 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true }
 })
 
-
-// will need virtual for orders, can you make it conditional on type
-userSchema
-  .virtual('purchases', {
-    ref: 'Order',
-    localField: '_id',
-    foreignField: 'customer'
-  })
-
-  userSchema
-  .virtual('orders', {
-    ref: 'Order',
-    localField: '_id',
-    foreignField: 'owner'
-  })
-
-
 userSchema
   .virtual('toysOwned', {
     ref: 'Toy',
