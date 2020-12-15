@@ -22,12 +22,15 @@ async function toyCreate(req, res, next) {
   }
 }
 
+async function getToy(toyId) {
+  const toy = await Toy.findById(toyId)
+  if (!toy) throw new Error(notFound)
+  return toy
+}
+
 async function toyShow(req, res, next) {
   try {
-    const toy = await Toy.findById(req.params.id)
-      .populate('owner')
-      .populate('reviews')
-    if (!toy) throw new Error(notFound)
+    const toy = await getToy(req.params.id)
     res.status(200).json(toy)
   } catch (err) {
     next(err)
@@ -36,8 +39,7 @@ async function toyShow(req, res, next) {
 
 async function toyUpdate(req, res, next) {
   try {
-    const toyToEdit = await Toy.findById(req.params.id)
-    if (!toyToEdit) throw new Error(notFound)
+    const toyToEdit = await getToy(req.params.id)
     if (!toyToEdit.owner.equals(req.currentUser._id)) throw new Error(forbidden)
     Object.assign(toyToEdit, req.body)
     await toyToEdit.save()
@@ -49,8 +51,7 @@ async function toyUpdate(req, res, next) {
 
 async function toyDelete(req, res, next) {
   try {
-    const toyToDel = await Toy.findById(req.params.id)
-    if (!toyToDel) throw new Error(notFound)
+    const toyToDel = await getToy(req.params.id)
     if (!toyToDel.owner.equals(req.currentUser._id)) throw new Error(forbidden)
     await toyToDel.remove()
     res.sendStatus(204)
@@ -59,11 +60,11 @@ async function toyDelete(req, res, next) {
   }
 }
 
-// possbily add in feature to stop block toy owners from reviewing
+
+// possbily add in feature to block toy owners from reviewing
 async function reviewCreate(req, res, next) {
   try {
-    const toyToReview = await Toy.findById(req.params.id)
-    if (!toyToReview) throw new Error(notFound)
+    const toyToReview = await getToy(req.params.id)
     const review = { ...req.body, owner: req.currentUser._id }
     toyToReview.reviews.push(review)
     await toyToReview.save()

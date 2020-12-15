@@ -6,6 +6,7 @@ const reviewSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 })
 
+// build in owner contact info, that only populates order? (virtual that deletes on Json but not object?)
 const toySchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, maxlength: 300, required: true },

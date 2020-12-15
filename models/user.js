@@ -10,6 +10,20 @@ const userSchema = new mongoose.Schema({
 
 
 // will need virtual for orders, can you make it conditional on type
+userSchema
+  .virtual('purchases', {
+    ref: 'Order',
+    localField: '_id',
+    foreignField: 'customer'
+  })
+
+  userSchema
+  .virtual('orders', {
+    ref: 'Order',
+    localField: '_id',
+    foreignField: 'owner'
+  })
+
 
 userSchema
   .virtual('toysOwned', {

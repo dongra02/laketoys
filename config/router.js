@@ -13,6 +13,9 @@ router.route('/login')
 router.route('/profile')
   .get(secureRoute, auth.getProfile)
 
+router.route('/profile/orders')
+  .get(secureRoute, auth.profileOrders)
+
 
 router.route('/toys')
   .get(toy.index)
@@ -26,7 +29,10 @@ router.route('/toys/:id')
 router.route('/toys/:id/reviews')
   .post(secureRoute, toy.reviewCreate)
 
+
 router.route('/orders')
-  .get(order.index)
+  .post(secureRoute, order.create)
+
+  
 
 module.exports = router
