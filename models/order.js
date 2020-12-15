@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const orderSchema = new mongoose.Schema({
-  orderStatus: { type: String, enum: ['Pending', 'Active', 'Complete'] },
   ownerPhone: { type: String, required: true },
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },

@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const auth = require('../controllers/auth')
 const toy = require('../controllers/toys')
+const order = require('../controllers/orders')
 const secureRoute = require('../lib/secureRoute')
 
 router.route('/register')
@@ -11,6 +12,7 @@ router.route('/login')
 
 router.route('/profile')
   .get(secureRoute, auth.getProfile)
+
 
 router.route('/toys')
   .get(toy.index)
@@ -23,5 +25,8 @@ router.route('/toys/:id')
 
 router.route('/toys/:id/reviews')
   .post(secureRoute, toy.reviewCreate)
+
+router.route('/orders')
+  .get(order.index)
 
 module.exports = router
