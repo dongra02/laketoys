@@ -1,31 +1,15 @@
 import React from 'react'
-
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import ToyIndex from './components/toys/ToyIndex'
 
 const App = () => {
   return (
-    <h1>This will be Lake Toys</h1>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={ToyIndex} />
+      </Switch>
+    </BrowserRouter>
   )
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
