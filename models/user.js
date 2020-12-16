@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   userType: { type: String, enum: ['Owner', 'Renter'], required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
-  profileImage: { type: String }
+  profileImage: { type: String, default: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fdefault-avatar-profile-icon-vector-social-media-user-image-182145777.jpg&imgrefurl=https%3A%2F%2Fwww.dreamstime.com%2Fillustration%2Fdefault-user-image.html&tbnid=oPiqei7vEbI03M&vet=12ahUKEwjQu7z2vtLtAhVnneAKHZekA6oQMygAegUIARDLAQ..i&docid=e6gEsA9KT4s-2M&w=800&h=800&q=default%20user%20image&ved=2ahUKEwjQu7z2vtLtAhVnneAKHZekA6oQMygAegUIARDLAQ' }
 })
 
 userSchema

@@ -9,6 +9,7 @@ const reviewSchema = new mongoose.Schema({
 // build in owner contact info, that only populates order? (virtual that deletes on Json but not object?)
 const toySchema = new mongoose.Schema({
   name: { type: String, required: true },
+  categories: [{ type: String, enum: ['Fishing', 'Boats', 'Inflatable', 'Childrens'], required: true }],
   description: { type: String, maxlength: 300, required: true },
   location: {
     latitude: { type: Number, required: true },
