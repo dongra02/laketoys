@@ -1,0 +1,11 @@
+{
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#5efed1",
+    "titleBar.activeBackground": "#5efed1",
+    "titleBar.inactiveBackground": "#5efed1",
+    "statusBar.foreground": "#000000",
+    "titleBar.inactiveForeground": "#000",
+    "titleBar.activeForeground": "#000",
+  },
+  "window.title": "FRONTEND Lake Toys FRONTEND"
+}f

@@ -12,6 +12,12 @@ Lake toys is an application allowing users to rent each others lake equipment.
 * Bcrypt
 * Mongoose-unique-validator
 
+### Frontend
+* React
+* React-router-dom
+* Axios
+
+
 
 ## Notes & Challenges In Process
 
