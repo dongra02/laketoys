@@ -16,6 +16,7 @@ const toySchema = new mongoose.Schema({
   },
   rate: { type: Number, required: true },
   reviews: [reviewSchema],
+  images: [{ type: String }],
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 })
 

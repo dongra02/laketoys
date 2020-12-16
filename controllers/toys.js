@@ -1,9 +1,9 @@
 const Toy = require('../models/toy')
 const { notFound, forbidden } = require('../lib/errorMessage')
 
-async function toyIndex(_req, res, next) {
+async function toyIndex(req, res, next) {
   try {
-    const toys = await Toy.find()
+    const toys = await Toy.find(req.query)
       .populate('owner', 'username')
     if (!toys) throw new Error(notFound)
     res.status(200).json(toys)
