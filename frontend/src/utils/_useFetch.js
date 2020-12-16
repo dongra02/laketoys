@@ -19,6 +19,7 @@ const useFetch = (request, params=null) => {
       }
     }
     getData()
+    console.log('request sent')
   }, [request, params])
 
   return state

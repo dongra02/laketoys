@@ -24,7 +24,6 @@ const toySchema = new mongoose.Schema({
 toySchema
   .virtual('avgRating')
   .get( function () {
-    console.log(!this.reviews)
     if (!this.reviews) return ''
     if (!this.reviews.length) return 'Not yet reviewed'
     const avgRating = this.reviews.reduce((acc, curr) => {
