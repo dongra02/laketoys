@@ -13,7 +13,7 @@ mongoose.connect(
   { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
   (err) => {
     if (err) {
-      console.log(err.name)
+      console.log(err)
       return
     }
     console.log('🐘🐘 Mongo is connected 🐘🐘')
