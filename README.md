@@ -21,13 +21,17 @@ Lake toys is an application allowing users to rent each others lake equipment.
 
 ## Notes & Challenges In Process
 
-Developing models, making toys query friendly (categories, available dates based on existing orders)
+* Developing models, making toys query friendly (categories, available dates based on existing orders)
+* Implementing React hooks
 
 ### Models:
 
-### Toys
+
 
 ```javascript
+
+// Toys
+
 const toySchema = new mongoose.Schema({
   name: { type: String, required: true },
   type: [{ type: String, enum: ['Fishing', 'Boats', 'Inflatable', 'Childrens'] }],
@@ -40,5 +44,15 @@ const toySchema = new mongoose.Schema({
   reviews: [reviewSchema],
   images: [{ type: String }],
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+})
+
+// Users
+
+const userSchema = new mongoose.Schema({
+  username: { type: String, unique: true, maxlength: 30, required: true },
+  userType: { type: String, enum: ['Owner', 'Renter'], required: true },
+  email: { type: String, unique: true, required: true },
+  password: { type: String, required: true },
+  profileImage: { type: String, default: 'default img string' }
 })
 ```
