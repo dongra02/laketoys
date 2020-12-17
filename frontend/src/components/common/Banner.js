@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import header from '../../images/header.png'
+import NavBar from './NavBar'
 
 const BannerStyled = styled.div`
   background-image: url(${header});
@@ -17,7 +18,9 @@ const BannerStyled = styled.div`
 const Banner = () => {
 
   return (
-    <BannerStyled />
+    <BannerStyled>
+      <NavBar />
+    </BannerStyled>
   )
 }
 
