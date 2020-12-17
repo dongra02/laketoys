@@ -17,6 +17,7 @@ Lake toys is an application allowing users to rent each others lake equipment.
 * React-router-dom
 * Axios
 * Http-proxy-middleware
+* Styled-components
 
 
 ## Notes & Challenges In Process
@@ -56,3 +57,4 @@ const userSchema = new mongoose.Schema({
   profileImage: { type: String, default: 'default img string' }
 })
 ```
+
