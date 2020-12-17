@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import NavLink from '../elements/NavLink'
 
 const NavBarStyled = styled.div`
   display: flex;
@@ -9,10 +10,14 @@ const NavBarStyled = styled.div`
 const NavBar = () => {
 
   return(
-    <>
-      <Link to='/'>Search Toys</Link>
-      <Link to='/profile'>Profile</Link>
-    </>
+    <NavBarStyled>
+      <NavLink to='/' label='Search Toys' />
+      <NavLink to='/profile' label='Profile' />
+    </NavBarStyled>
+    // <>
+    //   <Link to='/'>Search Toys</Link>
+    //   <Link to='/profile'>Profile</Link>
+    // </>
   )
 }
 
