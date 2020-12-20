@@ -5,16 +5,19 @@ import Banner from './components/common/Banner'
 import ToyIndex from './components/toys/ToyIndex'
 import ProfileShow from './components/profile/ProfileShow'
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Banner />
-      <Switch>
-        <Route exact path='/' component={ToyIndex} />
-        <Route path='/profile' component={ProfileShow} />
-      </Switch>
-    </BrowserRouter>
-  )
+class App extends React.Component {
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Banner />
+        <Switch>
+          <Route exact path='/' component={ToyIndex} />
+          <Route path='/profile' component={ProfileShow} />
+        </Switch>
+      </BrowserRouter>
+    )
+  }
 }
 
 export default App;

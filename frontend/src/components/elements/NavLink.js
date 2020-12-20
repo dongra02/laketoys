@@ -5,15 +5,16 @@ const LinkStyled = styled.a`
   color: #ffffff;
   font-weight: 600px;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 10px;
+  border: 1px solid #ffffff;
+  padding: 5px;
+  border-radius: 2px;
 `
 
 const NavLink = (props) => {
 
   return (
-    <LinkStyled>
-      <Link to={props.to}>{props.label}</Link>
-    </LinkStyled>
+      <Link to={props.to}><LinkStyled>{props.label}</LinkStyled></Link>
   )
 }
 
