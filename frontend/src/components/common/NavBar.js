@@ -25,7 +25,7 @@ class NavBar extends React.Component {
       <NavBarStyled>
         <NavLink to='/' label='Search Toys' />
         <NavLink to='/profile' label='Profile' />
-        <button onClick={this.handleDisplay}>Log In</button>
+        <button onClick={this.handleDisplay}>{this.state.displayForm ? 'Cancel' : 'Log in'}</button>
         {this.state.displayForm && <LogInForm />}
       </NavBarStyled>
       // <>
