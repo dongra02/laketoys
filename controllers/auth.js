@@ -30,7 +30,7 @@ async function login(req, res, next) {
 
 async function getProfile(req, res, next) {
   try {
-    const user = await User.findById(req.currentUser._id)
+    let user = await User.findById(req.currentUser._id)
       .populate('toysOwned')
     if (!user) throw new Error(notFound)
     res.status(200).json(user)

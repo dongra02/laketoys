@@ -10,8 +10,8 @@ const ProfileContainStyled = styled.div`
 
 const ProfileShow = ({ user }) => {
   
-
-
+  if (!user) return <p>finding user</p>
+  
   return (
     <ProfileContainStyled>
       <UserDetail user={user}/>

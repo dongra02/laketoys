@@ -5,12 +5,13 @@ import Banner from './components/common/Banner'
 import ToyIndex from './components/toys/ToyIndex'
 import ProfileShow from './components/profile/ProfileShow'
 
-import { getUserProfile } from './lib/api'
+import { getUserProfile, getUserOrders } from './lib/api'
 
 class App extends React.Component {
   
   state = {
-    userData: null
+    userData: null,
+    userOrders: null
   }
 
   componentDidMount = () => {
@@ -21,7 +22,16 @@ class App extends React.Component {
   getUser = async () => {
     try {
       const user = await getUserProfile()
-      this.setState({ userData: user.data })
+      this.setState({ userData: user.data }, this.getOrders)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  getOrders = async () => {
+    try {
+      const orders = await getUserOrders()
+      this.setState({ userOrders: orders.data })
     } catch (err) {
       console.log(err)
     }
@@ -44,7 +54,7 @@ class App extends React.Component {
         <Banner app={this.app}/>
         <Switch>
           <Route exact path='/' component={ToyIndex} />
-          <Route path='/profile' render={() => <ProfileShow user={this.state.userData}/>}/>
+          <Route path='/profile' render={() => <ProfileShow user={this.state.userData} orders={this.state.userOrders}/>}/>
         </Switch>
       </BrowserRouter>
     )

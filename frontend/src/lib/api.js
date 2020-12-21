@@ -15,3 +15,5 @@ export const getToys = (params) => axios.get(`${baseUrl}/toys`, { params: params
 export const logIn = (formData) => axios.post(`${baseUrl}/login`, formData)
 
 export const getUserProfile = () => axios.get(`${baseUrl}/profile`, withHeaders()) 
+
+export const getUserOrders = () => axios.get(`${baseUrl}/profile/orders`, withHeaders())
