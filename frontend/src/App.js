@@ -6,6 +6,9 @@ import ToyIndex from './components/toys/ToyIndex'
 import ProfileShow from './components/profile/ProfileShow'
 
 class App extends React.Component {
+  
+  
+
 
   render() {
     return (
