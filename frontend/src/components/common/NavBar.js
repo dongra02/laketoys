@@ -16,11 +16,13 @@ class NavBar extends React.Component {
     displayOptions: false,
   }
 
+
+// replace shitty links with icon taht drops login/register form option if not logged in, profile or search toys if logged in
   handleDisplay = () => {
     this.setState({ displayForm: !this.state.displayForm })
   }
 
-  // create handle log in function, undisplay form, set user using app.getuser
+  // sets App state of userData, closes form
   handleLogin = async () => {
     this.props.app.getUser()
     this.setState({ displayForm: false })

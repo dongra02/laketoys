@@ -8,13 +8,13 @@ const ProfileContainStyled = styled.div`
   background-color: gray;
 `
 
-const ProfileShow = () => {
+const ProfileShow = ({ user }) => {
   
 
 
   return (
     <ProfileContainStyled>
-      <UserDetail />
+      <UserDetail user={user}/>
     </ProfileContainStyled>
   )
 }

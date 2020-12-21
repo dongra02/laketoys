@@ -44,7 +44,7 @@ class App extends React.Component {
         <Banner app={this.app}/>
         <Switch>
           <Route exact path='/' component={ToyIndex} />
-          <Route path='/profile' component={ProfileShow} />
+          <Route path='/profile' render={() => <ProfileShow user={this.state.userData}/>}/>
         </Switch>
       </BrowserRouter>
     )

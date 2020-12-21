@@ -9,11 +9,11 @@ const UserDetailStyled = styled.div`
   align-items: center;
 `
 
-const UserDetail = () => {
+const UserDetail = ({ user }) => {
 
   return(
     <UserDetailStyled>
-      <h1>User Info Will Need API Call</h1>
+      <h1>{user.username}</h1>
       <p>Info will populate</p>
     </UserDetailStyled>
   )
