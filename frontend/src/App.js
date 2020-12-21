@@ -27,11 +27,21 @@ class App extends React.Component {
     }
   }
 
+  logOut = () => {
+    localStorage.removeItem('token')
+    this.setState({ userData: null })
+  }
+
+  app = {
+    getUser: this.getUser,
+    logOut: this.logOut
+  }
+
 
   render() {
     return (
       <BrowserRouter>
-        <Banner />
+        <Banner app={this.app}/>
         <Switch>
           <Route exact path='/' component={ToyIndex} />
           <Route path='/profile' component={ProfileShow} />

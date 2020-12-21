@@ -21,6 +21,7 @@ handleSubmit = async (e) => {
   try {
     const response = await logIn(this.state.formData)
     localStorage.setItem('token', response.data.token)
+    this.props.onLogin()
     // add in conditional for mode is register new user vs login
   } catch (err) {
     // store in state after seeing response

@@ -15,11 +15,11 @@ const BannerStyled = styled.div`
   align-items: flex-end;
 `
 
-const Banner = () => {
+const Banner = (props) => {
 
   return (
     <BannerStyled>
-      <NavBar />
+      <NavBar app={props.app} />
     </BannerStyled>
   )
 }
