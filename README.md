@@ -16,6 +16,7 @@ Lake toys is an application allowing users to rent each others lake equipment.
 * React
 * React-router-dom
 * Axios
+* Material-UI
 * Http-proxy-middleware
 * Styled-components
 
@@ -24,6 +25,7 @@ Lake toys is an application allowing users to rent each others lake equipment.
 
 * Developing models, making toys query friendly (categories, available dates based on existing orders)
 * Implementing React hooks
+* First time using Material UI
 
 ### Models:
 

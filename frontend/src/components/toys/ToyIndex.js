@@ -1,4 +1,5 @@
 import React from 'react'
+import Container from '@material-ui/core/Container'
 import { getToys } from '../../lib/api'
 import ToyGrid from './ToyGrid'
 
@@ -26,12 +27,12 @@ class ToyIndex extends React.Component {
     if (!filteredToys) return null
 
     return (
-      <>
+      <Container maxWidth='md'>
         { loading && <p>currently loading</p> }
         { error && <p>Don you need to fix this error and set up an error landinge page</p> }
         { filteredToys && view === 'grid' && <ToyGrid toys={filteredToys} /> }
         { filteredToys && view === 'map' && <h1>Put the map here instead</h1> }
-      </>
+      </Container>
     )
   }
 }
