@@ -16,6 +16,9 @@ router.route('/profile')
 router.route('/profile/orders')
   .get(secureRoute, order.profileOrders)
 
+router.route('/profiles')
+  .get(auth.getAllProfiles)
+
 
 router.route('/toys')
   .get(toy.index)

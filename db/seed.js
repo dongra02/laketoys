@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 const { dbURI } = require('../config/environment')
 const User = require('../models/user')
-const userData = require('./data/users')
+let userData = require('./data/users')
 const Toy = require('../models/toy')
 const toyData = require('./data/toys')
+const faker = require('faker')
 
 mongoose.connect(
   dbURI,
@@ -18,6 +19,20 @@ mongoose.connect(
       await mongoose.connection.db.dropDatabase()
       console.log('🗑 🗑 Database Dropped 🗑 🗑')
 
+      // user faker to create username then join with userData
+      const fakerUsers = []
+      for (let i = 0; i < 20; i++) {
+        const newUser = {
+          username: faker.internet.userName(),
+          userType: ['Owner', 'Renter'][Math.floor(Math.random() * 2)],
+          password: 'pass',
+          passwordConfirmation: 'pass',
+          profileImage: faker.image.avatar()
+        }
+        newUser['email'] = `${newUser.username}@email.com`,
+        fakerUsers.push(newUser)
+      }
+      userData = userData.concat(fakerUsers)
       const users = await User.create(userData)
       console.log(`${users.length} users created successfully`)
 

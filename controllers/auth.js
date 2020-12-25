@@ -28,6 +28,16 @@ async function login(req, res, next) {
   }
 }
 
+async function getAllProfiles(req, res, next) {
+  try {
+    const users = await User.find()
+    if (!users) throw new Error(notFound)
+    res.status(200).json(users)
+  } catch (err) {
+    next(err)
+  }
+}
+
 async function getProfile(req, res, next) {
   try {
     let user = await User.findById(req.currentUser._id)
@@ -43,5 +53,6 @@ async function getProfile(req, res, next) {
 module.exports = {
   register,
   login,
-  getProfile
+  getProfile,
+  getAllProfiles
 }
