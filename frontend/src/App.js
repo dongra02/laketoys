@@ -16,7 +16,10 @@ class App extends React.Component {
 
   componentDidMount = () => {
     const token = localStorage.getItem('token')
-    if (token) this.getUser()
+    if (token) {
+      console.log('true')
+      this.getUser()
+    }
   }
 
   getUser = async () => {

@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
+// import Paper from '@material-ui/core/Paper'
 // import { makeStyles } from '@material-ui/core/styles'
 import ToyItem from './ToyItem'
 
@@ -12,9 +12,7 @@ const ToyGrid = ({ toys }) => {
       {toys.map(toy => {
         return (
           <Grid item xs={3} key={toy.id}>
-            <Paper>
               <ToyItem {...toy} />
-            </Paper>
           </Grid>
         )
       })}
