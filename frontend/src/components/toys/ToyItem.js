@@ -30,32 +30,34 @@ const ToyItem = ({ name, description, rate, avgRating, categories, images }) => 
   const classes = useStyles()
 
   return (
-    <Paper className={classes.paper}>
-      <Grid item container alignItems='center' justify='space-around'>
-        <Grid item>
-          <ButtonBase className={classes.image}>
-            <img src={images[0]} alt='outdoor toy' className={classes.img}/>
-          </ButtonBase>
+    <ButtonBase>
+      <Paper className={classes.paper}>
+        <Grid item container alignItems='center' justify='space-around'>
+          <Grid item>
+            <div className={classes.image}>
+              <img src={images[0]} alt='outdoor toy' className={classes.img}/>
+            </div>
+          </Grid>
+          <Grid item>
+            <Typography variant='h6'>
+              {`$${rate}`}
+            </Typography>
+          </Grid>
+          <Grid item container direction='column' alignItems='center'>
+              <Grid item>
+                <Typography variant='h5' align='center'>
+                  {name}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant='body1'>
+                  {avgRating}
+                </Typography>
+              </Grid>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Typography variant='h6'>
-            {`$${rate}`}
-          </Typography>
-        </Grid>
-        <Grid item container direction='column' alignItems='center'>
-            <Grid item>
-              <Typography variant='h5' align='center'>
-                {name}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant='body1'>
-                {avgRating}
-              </Typography>
-            </Grid>
-        </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </ButtonBase>
   )
 }
 

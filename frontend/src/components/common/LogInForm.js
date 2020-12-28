@@ -11,6 +11,12 @@ state = {
   errors: {}
 }
 
+// set a mode in state, defaults to login
+// form includes all necessary inputs, with those for register mode conditional on state.mode === 'register'
+// on submit, check mode, grab necessary aspects of state to send to back end request
+// include button that switches mode
+// error handling
+
 handleChange = (e) => {
   const formData = { ...this.state.formData, [e.target.id]: e.target.value }
   this.setState({ formData })
